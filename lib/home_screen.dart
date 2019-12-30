@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                 name,
                 style: TextStyle(
                     fontSize: 25,
-                    color: Colors.deepPurple,
+                    color: Colors.white70,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                 email,
                 style: TextStyle(
                     fontSize: 25,
-                    color: Colors.deepPurple,
+                    color: Colors.white70,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 40),
@@ -65,11 +65,11 @@ class HomePage extends StatelessWidget {
                     return LoginPage();
                   }), ModalRoute.withName('/'));
                 },
-                color: Colors.deepPurple,
+                color: Colors.blueAccent,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Sign Out',
+                    'Sair',
                     style: TextStyle(fontSize: 25, color: Colors.white),
                   ),
                 ),
