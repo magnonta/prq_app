@@ -1,0 +1,4 @@
+#Mon Dec 30 00:11:36 BRST 2019
+base.0=C\:\\Users\\Magno Santos\\Documents\\code\\mobile\\prq_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
