@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Magno Santos\\Documents\\code\\mobile\\prq_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
+            "outputFile": "/home/paulo/development/appigreja/prq_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Magno Santos\\.gradle\\caches\\transforms-2\\files-2.1\\7c69e61705211f195cb98769b68464b7\\jetified-play-services-auth-16.0.1\\res\\values-watch-v20\\values.xml",
+                    "source": "/home/paulo/.gradle/caches/transforms-2/files-2.1/e45c279d2e23efd4c1b403996bd88186/jetified-play-services-auth-16.0.1/res/values-watch-v20/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Magno Santos\\Documents\\code\\mobile\\prq_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
+            "outputFile": "/home/paulo/development/appigreja/prq_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rCA/values-en-rCA.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Magno Santos\\.gradle\\caches\\transforms-2\\files-2.1\\da4d7260fdc40fbea022a0fc84d32258\\core-1.0.0\\res\\values-en-rCA\\values-en-rCA.xml",
+                    "source": "/home/paulo/.gradle/caches/transforms-2/files-2.1/da4d7260fdc40fbea022a0fc84d32258/core-1.0.0/res/values-en-rCA/values-en-rCA.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

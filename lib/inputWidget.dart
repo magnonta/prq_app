@@ -24,7 +24,7 @@ class InputWidget extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: "JohnDoe@example.com",
+                  hintText: "Teste@example.com",
                   hintStyle: TextStyle(color: Color(0xFFE1E1E1), fontSize: 14)),
             ),
           ),
