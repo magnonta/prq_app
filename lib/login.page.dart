@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:prq_app/inputWidget.dart';
 import 'package:prq_app/sign_in.google.dart';
@@ -13,60 +14,177 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   // title: Text("Seja bem vindo"),
+      //   backgroundColor: Colors.white,
+      // ),
       body: Container(
+        padding: EdgeInsets.only(
+          top: 60,
+          left: 40,
+          right: 40,
+        ),
         color: Colors.white,
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              // FlutterLogo(size: 150),
-              Image(image: AssetImage("assets/cruz_logo.png"), height: 70.0),
-              SizedBox(height: 50),
-              // TextFormField(
-              //   autofocus: true,
-              //   keyboardType: TextInputType.emailAddress,
-              //   style: new TextStyle(color: Colors.black, fontSize: 20),
-              //   decoration: InputDecoration(
-              //       labelText: "E-mail",
-              //       labelStyle: TextStyle(color: Colors.black)),
-              // ),
-              Stack(
-                alignment: Alignment.bottomRight,
-                children: <Widget>[
-                  InputWidget(30.0, 0.0),
-                  Padding(
-                    padding: EdgeInsets.only(right: 50),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Padding(
-                              padding: EdgeInsets.only(top: 40),
-                              child: Text(
-                                'Entre com seu E-mail...',
-                                textAlign: TextAlign.end,
-                                style: TextStyle(
-                                    color: Color(0xFFA0A0A0), fontSize: 12),
-                              )),
-                        )
-                      ],
-                    ),
-                  )
-                ],
+        child: ListView(
+          children: <Widget>[
+            SizedBox(
+              width: 128,
+              height: 128,
+              child: Image.asset("assets/church.png"),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              autofocus: true,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                  labelText: "E-mail",
+                  labelStyle: TextStyle(
+                    color: Colors.black38,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
+                  )),
+              style: TextStyle(
+                fontSize: 20,
               ),
-              Divider(),
-              TextFormField(
-                autofocus: true,
-                keyboardType: TextInputType.visiblePassword,
-                style: new TextStyle(color: Colors.black, fontSize: 20),
-                decoration: InputDecoration(
-                    labelText: "Senha",
-                    labelStyle: TextStyle(color: Colors.black)),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              autofocus: true,
+              keyboardType: TextInputType.text,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: "Senha",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
               ),
-              Divider(),
-              _signInButton(),
-            ],
-          ),
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            Container(
+              height: 40,
+              alignment: Alignment.centerRight,
+              child: FlatButton(
+                child: Text(
+                  "Recuperar Senha",
+                  textAlign: TextAlign.right,
+                ),
+                onPressed: () {},
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Container(
+              height: 60,
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  stops: [0.3, 1],
+                  colors: [
+                    Color(0xFFF58524),
+                    Color(0XFFFEFD8),
+                  ],
+                ),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(5),
+                ),
+              ),
+              child: SizedBox.expand(
+                child: FlatButton(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        "Login",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      Container(
+                        child: SizedBox(
+                          child: Image.asset("assets/cruz_logo1.png"),
+                          height: 28,
+                          width: 28,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onPressed: () => {},
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 60,
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(5),
+                ),
+              ),
+              child: SizedBox.expand(
+                child: FlatButton(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        "Login com Google",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      Container(
+                        child: SizedBox(
+                          child: Image.asset("assets/google_logo.png"),
+                          height: 28,
+                          width: 28,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ));
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 40,
+              child: FlatButton(
+                child: Text(
+                  "Cadastre-se",
+                  textAlign: TextAlign.center,
+                ),
+                onPressed: () {},
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -9,7 +9,7 @@ class InputWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 40, bottom: 30),
+      padding: EdgeInsets.only(right: 10, bottom: 30),
       child: Container(
         width: MediaQuery.of(context).size.width - 40,
         child: Material(
@@ -17,8 +17,11 @@ class InputWidget extends StatelessWidget {
           color: Colors.white,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(bottomRight),
-                  topRight: Radius.circular(topRight))),
+            bottomRight: Radius.circular(18.0),
+            bottomLeft: Radius.circular(18.0),
+            topRight: Radius.circular(18.0),
+            topLeft: Radius.circular(18.0),
+          )),
           child: Padding(
             padding: EdgeInsets.only(left: 40, right: 20, top: 10, bottom: 10),
             child: TextField(
