@@ -1,7 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:prq_app/sign_in.google.dart';
-
-import 'home_screen.dart';
+import 'package:http/http.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,13 +13,103 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _controllerEmail = TextEditingController();
   TextEditingController _controllerSenha = TextEditingController();
 
+  void _showDialogLoginVazio() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Atenção"),
+            content: Text(
+                "Por favor, preencha todos os \ncampos para efetuar o login"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("Fechar"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
+
+  void _showDialogUserNotFound() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Atenção"),
+            content: Text("Usuário ou Senha incorretos"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("Fechar"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
+
+  // void initState() {
+  //   super.initState();
+  //   Timer(
+  //       Duration(seconds: 4),
+  //       () => Navigator.pushNamed(
+  //             context, "/homeprincipal",
+  //             // MaterialPageRoute(
+  //             //   builder: (context) => LoginPage(),
+  //             // ),
+  //           ));
+  // }
+
+  // void _showDialogLoginSuccessfully() {
+  //   showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return AlertDialog(
+  //           title: Text("Seja bem vindo"),
+  //           content: Text("Login..."),
+  //           actions: <Widget>[
+  //             CircularProgressIndicator(),
+  //           ],
+  //         );
+  //         initState();
+  //       });
+  // }
+
   void _loginValidation() {
     String email = _controllerEmail.text;
     String senha = _controllerSenha.text;
 
-    if (email == null || senha == null) {
-    } else {}
+    if (email == "" || senha == "") {
+      _showDialogLoginVazio();
+    } else {
+      _postLogin();
+    }
+  }
 
+  _postLogin() async {
+    String uri = "https://api-nodeapp.herokuapp.com/testando";
+    // Map<String, String> headers = {"Content-type": "application/json"};
+    // String json = '{"title": "Hello", "body": "body text", "userId": 1}';
+    // Response response = await post(uri, headers: headers, body: json);
+
+    Response response = await get(uri);
+
+    int statusCode = response.statusCode;
+
+    if (statusCode < 200) {
+      throw new Exception("Error while fetching data");
+    } else if (statusCode > 400 && statusCode < 500) {
+      print(statusCode.toString());
+      _showDialogUserNotFound();
+    } else {
+      // initState();
+      // _showDialogLoginSuccessfully();
+      Navigator.pushNamed(context, "/homeprincipal");
+    }
     _cleanUpLogin();
   }
 
@@ -140,10 +231,11 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   onPressed: () => {
-                    Navigator.pushNamed(
-                      context,
-                      "/homeprincipal",
-                    )
+                    _loginValidation(),
+                    // Navigator.pushNamed(
+                    //   context,
+                    //   "/homeprincipal",
+                    // )
                   },
                 ),
               ),
