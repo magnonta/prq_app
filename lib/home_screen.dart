@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prq_app/sign_in.google.dart';
-import 'package:prq_app/login.page.dart';
+
+import 'splash.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -62,10 +63,10 @@ class HomePage extends StatelessWidget {
                   signOutGoogle();
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (context) {
-                    return LoginPage();
+                    return SplashScreen();
                   }), ModalRoute.withName('/'));
                 },
-                color: Colors.blueAccent,
+                color: Colors.deepOrangeAccent,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(

@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:prq_app/inputWidget.dart';
 import 'package:prq_app/sign_in.google.dart';
 
 import 'home_screen.dart';
@@ -11,13 +9,27 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController _controllerEmail = TextEditingController();
+  TextEditingController _controllerSenha = TextEditingController();
+
+  void _loginValidation() {
+    String email = _controllerEmail.text;
+    String senha = _controllerSenha.text;
+
+    if (email == null || senha == null) {
+    } else {}
+
+    _cleanUpLogin();
+  }
+
+  void _cleanUpLogin() {
+    _controllerEmail.text = "";
+    _controllerSenha.text = "";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   // title: Text("Seja bem vindo"),
-      //   backgroundColor: Colors.white,
-      // ),
       body: Container(
         padding: EdgeInsets.only(
           top: 60,
@@ -27,16 +39,19 @@ class _LoginPageState extends State<LoginPage> {
         color: Colors.white,
         child: ListView(
           children: <Widget>[
-            SizedBox(
-              width: 128,
-              height: 128,
-              child: Image.asset("assets/church.png"),
+            Hero(
+              tag: "church",
+              child: SizedBox(
+                width: 128,
+                height: 128,
+                child: Image.asset("assets/church.png"),
+              ),
             ),
             SizedBox(
               height: 20,
             ),
             TextFormField(
-              autofocus: true,
+              // autofocus: true,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   labelText: "E-mail",
@@ -48,12 +63,13 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(
                 fontSize: 20,
               ),
+              controller: _controllerEmail,
             ),
             SizedBox(
               height: 10,
             ),
             TextFormField(
-              autofocus: true,
+              // autofocus: true,
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
@@ -67,6 +83,7 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(
                 fontSize: 20,
               ),
+              controller: _controllerSenha,
             ),
             Container(
               height: 40,
@@ -111,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.white,
                           fontSize: 20,
                         ),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
                       ),
                       Container(
                         child: SizedBox(
@@ -122,7 +139,12 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ],
                   ),
-                  onPressed: () => {},
+                  onPressed: () => {
+                    Navigator.pushNamed(
+                      context,
+                      "/homeprincipal",
+                    )
+                  },
                 ),
               ),
             ),
@@ -162,11 +184,19 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   onPressed: () {
-                    Navigator.push(
+                    signInWithGoogle().whenComplete(() {
+                      Navigator.pushNamed(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ));
+                        "/home",
+                      );
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(
+                      //     builder: (context) {
+                      //       return HomePage();
+                      //     },
+                      //   ),
+                      // );
+                    });
                   },
                 ),
               ),
@@ -190,43 +220,43 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _signInButton() {
-    return OutlineButton(
-      splashColor: Colors.grey,
-      onPressed: () {
-        signInWithGoogle().whenComplete(() {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return HomePage();
-              },
-            ),
-          );
-        });
-      },
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-      highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.grey),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image(image: AssetImage("assets/google_logo.png"), height: 35.0),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(
-                'Login com Google',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget _signInButton() {
+  //   return OutlineButton(
+  //     splashColor: Colors.grey,
+  //     onPressed: () {
+  //       signInWithGoogle().whenComplete(() {
+  //         Navigator.of(context).push(
+  //           MaterialPageRoute(
+  //             builder: (context) {
+  //               return HomePage();
+  //             },
+  //           ),
+  //         );
+  //       });
+  //     },
+  //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+  //     highlightElevation: 0,
+  //     borderSide: BorderSide(color: Colors.grey),
+  //     child: Padding(
+  //       padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+  //       child: Row(
+  //         mainAxisSize: MainAxisSize.min,
+  //         mainAxisAlignment: MainAxisAlignment.center,
+  //         children: <Widget>[
+  //           Image(image: AssetImage("assets/google_logo.png"), height: 35.0),
+  //           Padding(
+  //             padding: const EdgeInsets.only(left: 10),
+  //             child: Text(
+  //               'Login com Google',
+  //               style: TextStyle(
+  //                 fontSize: 20,
+  //                 color: Colors.grey,
+  //               ),
+  //             ),
+  //           )
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 }
